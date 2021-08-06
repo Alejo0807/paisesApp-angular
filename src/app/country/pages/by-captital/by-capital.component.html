@@ -1,0 +1,29 @@
+<div class="animate__animated animate__fadeIn animte_faster">
+    
+    <h2>Por Capital</h2>
+    <hr>
+    
+    <div class="row ">
+        <div class="col">
+            <app-country-input 
+                (onEnter)="search( $event )"
+                (onDebounce)="recommendations( $event )"
+                [placeholder]="type" ></app-country-input>
+        </div>
+    </div>
+    
+    <hr>
+
+</div>
+
+<div *ngIf="existError"
+     class="alert alert-danger">
+    No se encontrió nada con el término <b>{{ term }}</b>
+</div>
+
+<div *ngIf="countries.length > 0"
+     class="row">
+    <div class="col">
+        <app-country-table [countries]="countries" ></app-country-table>
+    </div>
+</div>
